@@ -1,6 +1,17 @@
 <template>
-    <div>
-        <div>фото</div>
+    <div class="app" >
+        <div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+
+        </div>
         <div>
             <div>
                 <button type="button"><p>стрелка влево</p></button>
@@ -8,7 +19,6 @@
                     <p>Already have an account?</p>
                     <a href="">Sign In</a>
                 </div>
-                <p></p>
             </div>
             <h1>Free access 14 days trial</h1>
             <div>
@@ -16,10 +26,9 @@
                 <input type="text" name="userEmail" placeholder="Your Email Address" v-model="userEmail">
                 <input type="password" name="userPassword" placeholder="Your Password" v-model="userPassword">
             </div>
-            <div>
-                <p>At least 8 characters</p>
-            </div>
-            <button type="button" @click="createAccount" >Create Account</button>
+            <p>At least 8 characters</p>
+            <p v-for="error in errors">{{error}}</p>
+            <button type="button" @click="createAccount">Create Account</button>
         </div>
         
     </div>
@@ -30,26 +39,29 @@
 
 export default {
     name: 'App',
-    components: {},
+    components: {
+        // RegistrationErrors
+    },
     data(){
         return{
             fullName: '',
             userEmail: '',
-            userPassword: ''
+            userPassword: '',
+            errors: '',
+
         }
     },
     methods: {
-        createAccount(){
-            const completedForm = 
-                {
-                    email: this.userEmail,
-                    password: this.userPassword,
-                    firstName: "string",
-                    lastName: "string"
-                }
+        async createAccount(){
+            const completedForm = {
+                email: this.userEmail,
+                password: this.userPassword,
+                firstName: "string",
+                lastName: "string"
+            }
 
             console.log('completedForm:', completedForm)
-
+ 
             fetch('https://writy-app-api.herokuapp.com/api/Account/register', {
                 method: 'POST',
                 body: JSON.stringify(completedForm),
@@ -58,6 +70,12 @@ export default {
                 }
             })
             .then(resp => resp.json())
+            .then(result => { 
+                if (result.errors != null){
+                    console.log('errors:', result.errors),
+                    this.errors = result.errors
+                }
+            } )
         }
     }
 }
