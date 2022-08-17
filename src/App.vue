@@ -1,26 +1,24 @@
 <template>
     <div class="app" >
-        <div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-
+        <div class="left-block" >
+            <div class="left-block__images" >
+                <div class="images image__1" ></div>
+                <div class="images image__2" ></div>
+                <div class="images image__3" ></div>
+                <div class="images image__4"></div>
+                <div class="images image__5"></div>
+                <div class="images image__6"></div>
+                <div class="images image__7"></div>
+                <div class="images image__8"></div>
+                <div class="images image__9"></div>
+            </div>
         </div>
-        <div>
+        <div class="right-block" >
             <div>
                 <button type="button"><p>стрелка влево</p></button>
-                <div>
-                    <p>Already have an account?</p>
-                    <a href="">Sign In</a>
-                </div>
+                <p>Already have an account? <a href="">Sign In</a> </p>
             </div>
-            <h1>Free access 14 days trial</h1>
+            <h1>Free access <span>14 days trial</span> </h1>
             <div>
                 <input type="text" name="fullName" placeholder="Your Full Name" v-model="fullName">
                 <input type="text" name="userEmail" placeholder="Your Email Address" v-model="userEmail">
@@ -40,7 +38,6 @@
 export default {
     name: 'App',
     components: {
-        // RegistrationErrors
     },
     data(){
         return{
@@ -82,5 +79,76 @@ export default {
 </script>
 
 <style>
-
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+}
+.app{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+}
+.left-block{
+    display: flex;
+    height: 100%;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+.left-block__images{
+    display: flex;
+    width: 540px;
+    height: 556px;
+    left: 83px;
+    top: 213px;
+    margin-top: 213px;
+    margin-right: 83px;
+    flex-direction: initial;
+    flex-wrap: wrap;
+}
+.images{
+    width: 180px;
+    height: 180px;
+    
+}
+.image__1{
+    border-radius: 0px 60px;
+    background-image: url("./images/1.jpg");
+    background-size: 180px;
+    background-position: center;
+    background-color: #D9D9D9;
+}
+.image__3{
+    background: #23222D;
+    opacity: 0.2;
+    border-radius: 60px 60px 0px 0px;
+}
+.image__4{
+    background: #04A777;
+    opacity: 0.2;
+    border-radius: 100px 0px 0px 0px;
+}
+.image__5{
+    background: url("./images/2.jpg"), #D9D9D9;
+    background-size: 180px;
+    background-position: center;
+}
+.image__6{
+    background: #009DDC;
+    opacity: 0.2;
+    border-radius: 0px 0px 100px 0px;
+}
+.image__7{
+    background: #FF6663;
+    opacity: 0.2;
+    border-radius: 0px 60px 60px 0px;
+    transform: rotate(90deg);
+}
+.image__9{
+    background: #D9D9D9;
+    border-radius: 0px 60px;
+}
 </style>
