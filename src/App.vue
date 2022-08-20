@@ -2,20 +2,24 @@
     <div class="wrapper" >
         <div class="bg" >
             <div class="bg__container-images" >
-                <div class="bg__images top-left-image" ></div>
-                <div class="bg__images" ></div>
-                <div class="bg__images top-right-image" ></div>
+                <div class="bg__images top-left-image top-image" ></div>
+                <div class="bg__images top-image" ></div>
+                <div class="bg__images top-right-image top-image" ></div>
                 <div class="bg__images left-middle-image"></div>
                 <div class="bg__images central-image"></div>
                 <div class="bg__images right-middle-image"></div>
-                <div class="bg__images bottom-left-image"></div>
-                <div class="bg__images"></div>
-                <div class="bg__images bottom-right-image"></div>
+                <div class="bg__images bottom-left-image bottom-image"></div>
+                <div class="bg__images bottom-image"></div>
+                <div class="bg__images bottom-right-image bottom-image"></div>
             </div>
         </div>
+
+
+
+
         <div class="main" >
             <div class="main__head" >
-                <span class="main__btn-arrow" >стрелка</span>
+                <span class="material-symbols-outlined main__btn-arrow" >arrow_back</span>
                 <p>Already have an account? <a href="" class="main__link">Sign In</a> </p>
             </div>
             <h1>Free access <span>14 days trial</span> </h1>
@@ -26,18 +30,14 @@
             </div>
             <p class="main__password-instruction">At least 8 characters</p>
             <p class="main__errors" v-for="error in errors">{{error}}</p>
-
             <button type="button" @click="createAccount" class="main__btn-create-account">Create Account</button>
         </div>
-        
     </div>
 </template>
 
 
 
 <script>
-
-
 export default {
     name: 'App',
     components: {
@@ -76,9 +76,9 @@ export default {
                     this.errors = result.errors
                 }
                 else{
-                    window.location.href = "https://www.youtube.com"
+                    window.location.href = './html/successful-reg-page.html'
                 }
-            } )
+            })
         }
     }
 }
@@ -86,34 +86,36 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
 *{
     padding: 0;
-    margin: 0;
+    margin:  0;
     box-sizing: border-box;
-    background-color: #FFFFFF;
 }
 .wrapper{
     display: flex;
     height: 100vh;
-    width: 100vw;
+    width:  100vw;
+    background-color: #FFFFFF;
 }
 .bg{
     display: flex;
     height: 100%;
-    width: 50%;
-    padding-left: 83px;
-    padding-top: 213px;
+    width:  50%;
+    padding-left:  83px;
+    padding-top:   213px;
     padding-right: 83px;
 }
 .bg__container-images{
     display: flex;
-    width: 540px;
+    width:  540px;
     height: 556px;
     flex-direction: initial;
     flex-wrap: wrap;
 }
 .bg__images{
-    width: 180px;
+    width:  calc(100%/3);
     height: 180px;
     
 }
@@ -157,26 +159,29 @@ export default {
 .main{
     display: flex;
     height: 100%;
-    width: 100%;
+    width:  100%;
     align-items: center;
     flex-direction: column;
 }
 .main__head{
     display: flex;
     height: 28px;
-    width: 100%;
+    width:  100%;
     margin-top: 58px;
     justify-content: space-between;
     align-items: center;
 }
+.main__head .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+}
 .main__btn-arrow{
-    width: 24px;
+    width:  24px;
     height: 15px;
     margin-left: 100px;
 }
 .main__head p{
     font-family: Lato;
-    font-size: 20px;
+    font-size:   20px;
     font-weight: 500;
     line-height: 28px;
     letter-spacing: 0em;
@@ -190,10 +195,9 @@ export default {
     text-decoration: none;
 }
 .main h1{
-    width: 440px;
+    width:  440px;
     height: 120px;
     font-family: Lato;
-    font-style: Bold;
     font-size: 48px;
     color: #242331;
     margin-top: 58px
@@ -209,15 +213,14 @@ export default {
     gap: 24px;
 }
 .main__input{
-    width: 440px;
-    height: 48px;
+    width:  440px;
     border: 1px solid #C5C5C5;
     border-radius: 8px;
     padding: 12px 16px;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size:   16px;
     line-height: 24px;
     color: #A6A0A0;
 }
@@ -235,21 +238,19 @@ export default {
 }
 .main__password-instruction{
     margin-top: 8px;
-    width: 440px;
-    height: 20px;
+    width:  440px;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size:   14px;
 }
 .main__errors{
     margin-top: 8px;
-    width: 440px;
-    height: 16px;
+    width:  440px;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size:   16px;
     color: #FF6663;
 }
 .main__btn-create-account{
@@ -267,8 +268,87 @@ export default {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size:   16px;
     line-height: 24px;
     color: #FEFFFE;;
+}
+
+
+
+
+@media screen and (max-width: 980px) {
+.wrapper{
+    flex-direction: column;
+}
+.bg{
+    height: 120px;
+    width:  100%;
+    padding: 0px;
+    align-items: center;
+    justify-content: center;
+}
+.bg__container-images{
+    width:  100%;
+    height: 100%;
+    flex-direction: initial;
+    flex-wrap: wrap;
+}
+.bg__images{
+    height: 120px;
+}
+.top-image{
+    display: none;
+}
+.central-image{
+    background: url("./images/2.jpg"), #D9D9D9;
+    background-size: 120px;
+    background-position: center;
+}
+.bottom-image{
+    display: none;
+}
+
+
+
+
+
+.main__head{
+    margin-top: 24px;
+}
+.main__btn-arrow{
+    margin-left: 24px;
+}
+.main__head p{
+    font-size:   16px;
+    margin-right: 24px;
+    width: 230px;
+}
+.main h1{
+    width:  312px;
+    height: 80px;
+    font-size: 32px;
+    margin-top: 30px
+}
+.main__registration-form{
+    margin-top: 32px;
+    gap: 28px;
+}
+.main__input{
+    width:  312px;
+    padding: 10px 16px;
+    font-size: 16px;
+}
+.main__password-instruction{
+    width:  312px;
+}
+.main__errors{
+    width:  312px;
+    font-size: 14px;
+}
+.main__btn-create-account{
+    margin-top: 32px;
+    width: 312px;
+    padding: 10px 16px;
+}
 }
 </style>
