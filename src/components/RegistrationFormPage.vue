@@ -1,103 +1,74 @@
 <template>
-    <div class="wrapper" >
-        <div class="bg" >
-            <div class="bg__container-images" >
-                <div class="bg__images top-left-image top-image" ></div>
-                <div class="bg__images top-image" ></div>
-                <div class="bg__images top-right-image top-image" ></div>
-                <div class="bg__images left-middle-image"></div>
-                <div class="bg__images central-image"></div>
-                <div class="bg__images right-middle-image"></div>
-                <div class="bg__images bottom-left-image bottom-image"></div>
-                <div class="bg__images bottom-image"></div>
-                <div class="bg__images bottom-right-image bottom-image"></div>
-            </div>
+    <div class="main" >
+        <div class="main__head" >
+            <span class="material-symbols-outlined main__btn-arrow" >arrow_back</span>
+            <p>Already have an account? <a href="" class="main__link">Sign In</a> </p>
         </div>
-        <router-view></router-view>
+        <h1>Free access <span>14 days trial</span> </h1>
+        <div class="main__registration-form">
+            <input type="text" name="fullName" placeholder="Your Full Name" v-model="fullName" class="main__input">
+            <input type="text" name="userEmail" placeholder="Your Email Address" v-model="userEmail" class="main__input">
+            <input type="password" name="userPassword" placeholder="Your Password" v-model="userPassword" class="main__input">
+        </div>
+        <p class="main__password-instruction">At least 8 characters</p>
+        <p class="main__errors" v-for="error in errors">{{error}}</p>
+        <button type="button" @click="createAccount" class="main__btn-create-account">Create Account</button>
     </div>
 </template>
 
-
 <script>
 export default {
-  name: 'App',
-  components:{
-}}
- </script>
+    name: 'App',
+    components: {
+    },
+    data(){
+        return{
+            fullName: '',
+            userEmail: '',
+            userPassword: '',
+            errors: '',
+
+        }
+    },
+    methods: {
+        async createAccount(){
+            const completedForm = {
+                email: this.userEmail,
+                password: this.userPassword,
+                firstName: "string",
+                lastName: "string"
+            }
+
+            console.log('completedForm:', completedForm)
+ 
+            fetch('https://writy-app-api.herokuapp.com/api/Account/register', {
+                method: 'POST',
+                body: JSON.stringify(completedForm),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(resp => resp.json())
+            .then(result => { 
+                if (result.errors != null){
+                    console.log('errors:', result.errors),
+                    this.errors = result.errors
+                }
+                else{
+                    // window.location.href = '#/account-registered'
+                    this.$router.push('account-registered')
+                }
+            })
+        }
+    }
+}
+</script>
+
 
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
-
-*{
-    padding: 0;
-    margin:  0;
-    box-sizing: border-box;
-}
-.wrapper{
-    display: flex;
-    height: 100vh;
-    width:  100vw;
-    background-color: #FFFFFF;
-}
-.bg{
-    display: flex;
-    height: 100%;
-    width:  50%;
-    padding-left:  83px;
-    padding-top:   213px;
-    padding-right: 83px;
-}
-.bg__container-images{
-    display: flex;
-    width:  540px;
-    height: 556px;
-    flex-direction: initial;
-    flex-wrap: wrap;
-}
-.bg__images{
-    width:  calc(100%/3);
-    height: 180px;
-    
-}
-.top-left-image{
-    border-radius: 0px 60px;
-    background-image: url("./images/1.jpg");
-    background-size: 180px;
-    background-position: center;
-    background-color: #D9D9D9;
-}
-.top-right-image{
-    background: #23222D;
-    opacity: 0.2;
-    border-radius: 60px 60px 0px 0px;
-}
-.left-middle-image{
-    background: #04A777;
-    opacity: 0.2;
-    border-radius: 100px 0px 0px 0px;
-}
-.central-image{
-    background: url("./images/2.jpg"), #D9D9D9;
-    background-size: 180px;
-    background-position: center;
-}
-.right-middle-image{
-    background: #009DDC;
-    opacity: 0.2;
-    border-radius: 0px 0px 100px 0px;
-}
-.bottom-left-image{
-    background: #FF6663;
-    opacity: 0.2;
-    border-radius: 0px 60px 60px 0px;
-    transform: rotate(90deg);
-}
-.bottom-right-image{
-    background: #D9D9D9;
-    border-radius: 0px 60px;
-}
 
 
 
@@ -223,41 +194,6 @@ export default {
 
 
 @media screen and (max-width: 980px) {
-.wrapper{
-    flex-direction: column;
-}
-.bg{
-    height: 120px;
-    width:  100%;
-    padding: 0px;
-    align-items: center;
-    justify-content: center;
-}
-.bg__container-images{
-    width:  100%;
-    height: 100%;
-    flex-direction: initial;
-    flex-wrap: wrap;
-}
-.bg__images{
-    height: 120px;
-}
-.top-image{
-    display: none;
-}
-.central-image{
-    background: url("./images/2.jpg"), #D9D9D9;
-    background-size: 120px;
-    background-position: center;
-}
-.bottom-image{
-    display: none;
-}
-
-
-
-
-
 .main__head{
     margin-top: 24px;
 }
