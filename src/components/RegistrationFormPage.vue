@@ -1,6 +1,6 @@
 <template>
     <div class="main" >
-        <div class="main__head" >
+        <div class="main__header" >
             <span class="material-symbols-outlined main__btn-arrow" >arrow_back</span>
             <p>Already have an account? <a href="" class="main__link">Sign In</a> </p>
         </div>
@@ -80,7 +80,7 @@ export default {
     align-items: center;
     flex-direction: column;
 }
-.main__head{
+.main__header{
     display: flex;
     height: 28px;
     width:  100%;
@@ -88,7 +88,7 @@ export default {
     justify-content: space-between;
     align-items: center;
 }
-.main__head .material-symbols-outlined {
+.main__header .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
 }
 .main__btn-arrow{
@@ -96,7 +96,7 @@ export default {
     height: 15px;
     margin-left: 100px;
 }
-.main__head p{
+.main__header p{
     font-family: Lato;
     font-size:   20px;
     font-weight: 500;
@@ -142,7 +142,7 @@ export default {
     color: #A6A0A0;
 }
 .main__input:hover {
-    border: 2px solid #009DDC;
+    border: 1px solid #009DDC;
 }
 .main__input:hover::placeholder {
     color: black;
@@ -194,43 +194,43 @@ export default {
 
 
 @media screen and (max-width: 980px) {
-.main__head{
-    margin-top: 24px;
-}
-.main__btn-arrow{
-    margin-left: 24px;
-}
-.main__head p{
-    font-size:   16px;
-    margin-right: 24px;
-    width: 230px;
-}
-.main h1{
-    width:  312px;
-    height: 80px;
-    font-size: 32px;
-    margin-top: 30px
-}
-.main__registration-form{
-    margin-top: 32px;
-    gap: 28px;
-}
-.main__input{
-    width:  312px;
-    padding: 10px 16px;
-    font-size: 16px;
-}
-.main__password-instruction{
-    width:  312px;
-}
-.main__errors{
-    width:  312px;
-    font-size: 14px;
-}
-.main__btn-create-account{
-    margin-top: 32px;
-    width: 312px;
-    padding: 10px 16px;
-}
+    .main__header{
+        margin-top: 24px;
+    }
+    .main__btn-arrow{
+        margin-left: 24px;
+    }
+    .main__header p{
+        font-size:   16px;
+        margin-right: 24px;
+        width: 230px;
+    }
+    .main h1{
+        width:  312px;
+        height: 80px;
+        font-size: 32px;
+        margin-top: 30px
+    }
+    .main__registration-form{
+        margin-top: 32px;
+        gap: 28px;
+    }
+    .main__input{
+        width:  312px;
+        padding: 10px 16px;
+        font-size: 16px;
+    }
+    .main__password-instruction{
+        width:  312px;
+    }
+    .main__errors{
+        width:  312px;
+        font-size: 14px;
+    }
+    .main__btn-create-account{
+        margin-top: 32px;
+        width: 312px;
+        padding: 10px 16px;
+    }
 }
 </style>
